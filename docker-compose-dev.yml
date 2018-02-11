@@ -8,6 +8,8 @@ services:
       context: ./services/users
       dockerfile: Dockerfile-dev
     volumes:
+      # mount local drives into vmachinesso you can edit externally
+      # localdir:containerdir
       - './services/users:/usr/src/app'
     ports:
       - 5001:5000
@@ -48,6 +50,7 @@ services:
       - REACT_APP_API_GATEWAY_URL=${REACT_APP_API_GATEWAY_URL}
       - REACT_APP_EXERCISES_SERVICE_URL=${REACT_APP_EXERCISES_SERVICE_URL}
       - REACT_APP_SCORES_SERVICE_URL=${REACT_APP_SCORES_SERVICE_URL}
+      # for macs
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - users
